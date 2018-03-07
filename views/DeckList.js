@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
-import { View, Text, FlatList, TouchableNativeFeedback } from 'react-native'
-import styled from 'styled-components/native'
+import { FlatList, TouchableNativeFeedback } from 'react-native'
+import { Header } from '../components/Text'
+import Card from '../components/Card'
+import ViewContainer from '../components/ViewContainer'
 
 // default view
 class DeckList extends Component {
 	renderDeckCard = ({ item }) => {
 		return (
 			<TouchableNativeFeedback>
-				<Card key={item.key}>
-					<Header size="h1" pb={2} primary>
+				<StyledCard key={item.key}>
+					<Header size="h2" pb={1} primary center>
 						{item.title}
 					</Header>
-					<Header size="h3">{item.cardCount} cards</Header>
-				</Card>
+					<Header size="h4">{item.cardCount} cards</Header>
+				</StyledCard>
 			</TouchableNativeFeedback>
 		)
 	}
@@ -58,43 +60,24 @@ class DeckList extends Component {
 			},
 		]
 		return (
-			<ViewContainer>
+			<StyledViewContainer>
 				<FlatList
 					data={data}
 					renderItem={this.renderDeckCard}
 					contentContainerStyle={{ paddingTop: 16, paddingBottom: 16 }}
 				/>
-			</ViewContainer>
+			</StyledViewContainer>
 		)
 	}
 }
 
-const ViewContainer = styled(View)`
-	background-color: #ecf0f1;
-`
-
-const Card = styled(View)`
+const StyledCard = Card.extend`
 	padding: 32px 64px;
 	margin: 8px 16px;
-	align-items: center;
-	shadow-radius: 3;
-	shadow-opacity: 0.8;
-	shadow-color: rgba(0,0,0,0.2);
-	shadow-offset: {
-		width: 0,
-		height: 3,
-	};
-	background-color: white;
-	elevation: 3;
 `
 
-const Header = styled(Text)`
-	text-align: center;
-	color: ${props => (props.primary ? 'cornflowerblue' : 'grey')};
-	font-size: ${props =>
-		(props.size === 'h1' && '32px') || (props.size === 'h3' && '24px')};
-	padding: ${({ p }) => (p ? `${p * 8}px` : '0px')};
-	padding-bottom: ${({ pb }) => (pb ? `${pb * 8}px` : '0px')};
+const StyledViewContainer = ViewContainer.extend`
+	padding: 0;
 `
 
 export default DeckList
