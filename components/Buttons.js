@@ -12,7 +12,7 @@ const Button = styled(TouchableOpacity)`
 `
 
 export const ButtonText = ({ children }) => (
-	<StyledButtonText>{children.toUpperCase()}</StyledButtonText>
+	<StyledButtonText>{children}</StyledButtonText>
 )
 
 const StyledButtonText = styled(Text)`

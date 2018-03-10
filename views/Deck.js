@@ -18,7 +18,11 @@ class Deck extends Component {
 		// TODO display option to start the quiz
 		// TODO display option to add new question card to deck
 
+		const { navigate } = this.props.navigation
 		const { title, cardCount } = this.props.navigation.state.params
+
+		// TODO replace this with data
+		const question = 'What does a higher order component do?'
 
 		return (
 			<FlatCard>
@@ -28,7 +32,7 @@ class Deck extends Component {
 				<Header size="h4" pb={4}>
 					{cardCount} questions
 				</Header>
-				<Button onPress={() => alert('Start quiz')}>
+				<Button onPress={() => navigate('Quiz', { question })}>
 					<ButtonText>START QUIZ</ButtonText>
 				</Button>
 				<MinimalButton onPress={() => alert('Add question')}>
