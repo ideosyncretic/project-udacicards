@@ -6,22 +6,36 @@ import ViewContainer from '../components/ViewContainer'
 import COLOR from '../styles/colors'
 
 class AddDeck extends Component {
+	state = {
+		title: '',
+	}
+
+	handleTitleChange = title => {
+		this.setState({ title })
+	}
+
 	render() {
 		// TODO option to enter title
 		// TODO option to submit title
-
+		const { title } = this.state
 		return (
 			<StyledViewContainer>
 				<Header size="h4">Name your deck</Header>
 				<View>
 					<StyledTextInput
+						value={title}
+						onChangeText={title => this.handleTitleChange(title)}
 						multiline
 						numberOfLines={2}
 						placeholder="Title"
 						underlineColorAndroid={COLOR.primary}
 					/>
 				</View>
-				<Button title="Add deck" color={COLOR.primary} onPress={() => {}} />
+				<Button
+					title="Add deck"
+					color={COLOR.primary}
+					onPress={() => alert(title)}
+				/>
 			</StyledViewContainer>
 		)
 	}

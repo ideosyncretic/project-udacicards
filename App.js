@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Provider } from 'react-redux'
+import { createStore, combineReducers, compose } from 'redux'
 import { StyleSheet, View, StatusBar } from 'react-native'
 import { TabNavigator } from 'react-navigation'
 import { Constants } from 'expo'
