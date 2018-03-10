@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import { createStore, combineReducers, compose } from 'redux'
+import { createStore } from 'redux'
 import { StyleSheet, View, StatusBar } from 'react-native'
 import { StackNavigator, TabNavigator } from 'react-navigation'
 import { Constants } from 'expo'
@@ -10,14 +10,23 @@ import AddDeck from './views/AddDeck'
 import AddQuestion from './views/AddQuestion'
 import Quiz from './views/Quiz'
 import COLOR from './styles/colors'
+import rootReducer from './reducers'
+import data from './utils/data'
 
 export default class App extends Component {
 	render() {
+		const store = createStore(
+			rootReducer,
+			window.__REDUX_DEVTOOLS_EXTENSION__ &&
+				window.__REDUX_DEVTOOLS_EXTENSION__(),
+		)
 		return (
-			<View style={styles.container}>
-				<StyledStatusBar backgroundColor="#000" barStyle="light-content" />
-				<Stacks />
-			</View>
+			<Provider store={store}>
+				<View style={styles.container}>
+					<StyledStatusBar backgroundColor="#000" barStyle="light-content" />
+					<Stacks />
+				</View>
+			</Provider>
 		)
 	}
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 import Card from '../components/Card'
 import { Header } from '../components/Text'
@@ -11,6 +11,12 @@ import Button, {
 import COLOR from '../styles/colors'
 
 class Quiz extends Component {
+	static navigationOptions = ({ navigation }) => {
+		const { title } = navigation.state.params
+		return {
+			title,
+		}
+	}
 	render() {
 		// TODO display a question card
 		// TODO display option to view the answer (flips card)
@@ -18,11 +24,12 @@ class Quiz extends Component {
 		// TODO display Incorrect button
 		// TODO display number of remaining question cards in quiz
 		// TODO display percentage of correct answers once quiz is complete
-		const { question } = this.props.navigation.state.params
+		// const { questions } = this.props.navigation.state.params
 		return (
 			<Card>
+				<Header size="h6">1/10</Header>
 				<Header size="h1" pb={2} center>
-					{question}
+					Some question
 				</Header>
 				<MinimalButton>
 					<MinimalButtonText>Flip for answer</MinimalButtonText>
@@ -50,6 +57,13 @@ class Quiz extends Component {
 			</Card>
 		)
 	}
+}
+
+const generateStack = questions => {
+	let views = {}
+	questions.map(question => {
+		views[question.id] = question
+	})
 }
 
 export default Quiz

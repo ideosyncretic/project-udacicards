@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { FlatList, TouchableNativeFeedback } from 'react-native'
+import { FlatList, TouchableOpacity } from 'react-native'
 import { Header } from '../components/Text'
 import Card from '../components/Card'
 import ViewContainer from '../components/ViewContainer'
 import FAB from 'react-native-fab'
 import { Ionicons } from '@expo/vector-icons'
 import COLORS from '../styles/colors'
-import data from '../utils/data'
+import decks from '../utils/data'
 
 // default view
 class DeckList extends Component {
@@ -18,7 +18,7 @@ class DeckList extends Component {
 		return (
 			<StyledViewContainer>
 				<FlatList
-					data={data}
+					data={decks}
 					renderItem={({ item }) => (
 						<DeckCard key={item.key} {...item} navigate={navigate} />
 					)}
@@ -40,16 +40,14 @@ class DeckList extends Component {
 
 const DeckCard = ({ title, cardCount, navigate }) => {
 	return (
-		<TouchableNativeFeedback
-			onPress={() => navigate('Deck', { title, cardCount })}
-		>
+		<TouchableOpacity onPress={() => navigate('Deck', { title, cardCount })}>
 			<StyledCard>
 				<Header size="h2" pb={1} center>
 					{title}
 				</Header>
 				<Header size="h4">{cardCount} cards</Header>
 			</StyledCard>
-		</TouchableNativeFeedback>
+		</TouchableOpacity>
 	)
 }
 

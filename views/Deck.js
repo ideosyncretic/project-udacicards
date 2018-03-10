@@ -21,18 +21,17 @@ class Deck extends Component {
 		const { navigate } = this.props.navigation
 		const { title, cardCount } = this.props.navigation.state.params
 
-		// TODO replace this with data
-		const question = 'What does a higher order component do?'
+		// TODO get questions from store
 
 		return (
 			<FlatCard>
-				<Header size="h1" pb={2}>
+				<Header size="h1" pb={2} center>
 					{title}
 				</Header>
-				<Header size="h4" pb={4}>
+				<Header size="h4" pb={4} center>
 					{cardCount} questions
 				</Header>
-				<Button onPress={() => navigate('Quiz', { question })}>
+				<Button onPress={() => navigate('Quiz', { title })}>
 					<ButtonText>START QUIZ</ButtonText>
 				</Button>
 				<MinimalButton onPress={() => alert('Add question')}>
