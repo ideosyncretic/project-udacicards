@@ -44,7 +44,7 @@ const DeckCard = ({ title, cardCount, navigate }) => {
 			onPress={() => navigate('Deck', { title, cardCount })}
 		>
 			<StyledCard>
-				<Header size="h2" pb={1} primary center>
+				<Header size="h2" pb={1} center>
 					{title}
 				</Header>
 				<Header size="h4">{cardCount} cards</Header>
@@ -54,7 +54,7 @@ const DeckCard = ({ title, cardCount, navigate }) => {
 }
 
 const StyledCard = Card.extend`
-	padding: 32px 64px;
+	padding: 32px;
 	margin: 8px 16px;
 `
 

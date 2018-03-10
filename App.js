@@ -54,7 +54,7 @@ const Tabs = TabNavigator(
 			},
 			style: {
 				height: 56,
-				backgroundColor: 'cornflowerblue',
+				backgroundColor: COLOR.primary,
 				shadowColor: 'rgba(0, 0, 0, 0.24)',
 				shadowOffset: {
 					width: 0,

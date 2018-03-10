@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { View, TextInput, Button } from 'react-native'
+import { View, TextInput } from 'react-native'
 import styled from 'styled-components/native'
+import Button, { ButtonText } from '../components/Buttons'
 import { Header } from '../components/Text'
 import ViewContainer from '../components/ViewContainer'
 import COLOR from '../styles/colors'
@@ -36,11 +37,9 @@ class AddDeck extends Component {
 						selectionColor={COLOR.primary}
 					/>
 				</View>
-				<Button
-					title="Add deck"
-					color={COLOR.primary}
-					onPress={() => alert(title)}
-				/>
+				<Button onPress={() => alert(title)}>
+					<ButtonText>ADD DECK</ButtonText>
+				</Button>
 			</StyledViewContainer>
 		)
 	}
