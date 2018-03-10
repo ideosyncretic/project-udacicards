@@ -2,20 +2,21 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import { createStore, combineReducers, compose } from 'redux'
 import { StyleSheet, View, StatusBar } from 'react-native'
-import { TabNavigator } from 'react-navigation'
+import { StackNavigator, TabNavigator } from 'react-navigation'
 import { Constants } from 'expo'
 import DeckList from './views/DeckList'
 import Deck from './views/Deck'
 import AddDeck from './views/AddDeck'
 import AddQuestion from './views/AddQuestion'
 import Quiz from './views/Quiz'
+import COLOR from './styles/colors'
 
 export default class App extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
 				<StyledStatusBar backgroundColor="#000" barStyle="light-content" />
-				<Tabs />
+				<Stacks />
 			</View>
 		)
 	}
@@ -27,18 +28,6 @@ const Tabs = TabNavigator(
 			screen: DeckList,
 			navigationOptions: {
 				tabBarLabel: 'Decks',
-			},
-		},
-		AddDeck: {
-			screen: AddDeck,
-			navigationOptions: {
-				tabBarLabel: 'Add Decks',
-			},
-		},
-		Deck: {
-			screen: Deck,
-			navigationOptions: {
-				tabBarLabel: 'Deck',
 			},
 		},
 		Quiz: {
@@ -77,6 +66,27 @@ const Tabs = TabNavigator(
 		},
 	},
 )
+
+const StackNavigatorOptions = {
+	headerTintColor: COLOR.textLight,
+	headerStyle: {
+		backgroundColor: COLOR.primary,
+	},
+}
+
+const Stacks = StackNavigator({
+	Home: {
+		screen: Tabs,
+	},
+	AddDeck: {
+		screen: AddDeck,
+		navigationOptions: StackNavigatorOptions,
+	},
+	Deck: {
+		screen: Deck,
+		navigationOptions: StackNavigatorOptions,
+	},
+})
 
 const StyledStatusBar = ({ backgroundColor, ...props }) => {
 	return (

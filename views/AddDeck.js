@@ -6,6 +6,10 @@ import ViewContainer from '../components/ViewContainer'
 import COLOR from '../styles/colors'
 
 class AddDeck extends Component {
+	static navigationOptions = () => ({
+		title: 'Add Deck',
+	})
+
 	state = {
 		title: '',
 	}
@@ -29,6 +33,7 @@ class AddDeck extends Component {
 						numberOfLines={2}
 						placeholder="Title"
 						underlineColorAndroid={COLOR.primary}
+						selectionColor={COLOR.primary}
 					/>
 				</View>
 				<Button
