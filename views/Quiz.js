@@ -12,11 +12,14 @@ import COLOR from '../styles/colors'
 
 class Quiz extends Component {
 	static navigationOptions = ({ navigation }) => {
-		const { title } = navigation.state.params
+		const { deck } = navigation.state.params
 		return {
-			title,
+			title: deck.title,
 		}
 	}
+
+	componentDidMount() {}
+
 	render() {
 		// TODO display a question card
 		// TODO display option to view the answer (flips card)
@@ -24,7 +27,7 @@ class Quiz extends Component {
 		// TODO display Incorrect button
 		// TODO display number of remaining question cards in quiz
 		// TODO display percentage of correct answers once quiz is complete
-		// const { questions } = this.props.navigation.state.params
+		const { deck } = this.props.navigation.state.params
 		return (
 			<Card>
 				<Header size="h6">1/10</Header>

@@ -32,7 +32,7 @@ class Deck extends Component {
 				<Header size="h4" pb={4} center>
 					{cardCount} questions
 				</Header>
-				<Button onPress={() => navigate('Quiz', { title })}>
+				<Button onPress={() => navigate('Quiz', { deck })}>
 					<ButtonText>START QUIZ</ButtonText>
 				</Button>
 				<MinimalButton onPress={() => navigate('AddQuestion', { deck })}>

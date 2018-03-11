@@ -22,7 +22,7 @@ class AddDeck extends Component {
 
 	submit = ({ title }) => {
 		this.props.addDeck(title)
-		this.props.navigation.navigate('Home')
+		this.props.navigation.navigate('Home') // TODO redirect to newly created Deck
 	}
 
 	render() {

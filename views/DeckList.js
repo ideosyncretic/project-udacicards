@@ -70,7 +70,7 @@ const mapStateToProps = ({ decks }) => {
 	const decksArr = Object.keys(decks).map(id => {
 		return {
 			...decks[id],
-			cardCount: decks[id].cards.length,
+			cardCount: decks[id].cards ? decks[id].cards.length : 0,
 		}
 	})
 	return {
