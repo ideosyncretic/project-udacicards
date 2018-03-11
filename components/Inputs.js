@@ -25,6 +25,7 @@ const Input = props => {
 const StyledTextInput = styled(TextInput)`
 	font-size: ${({ size }) => getSize(size)};
 	padding: ${({ size }) => getPadding(size)};
+	margin: 10px 0px;
 `
 
 const getSize = size => {

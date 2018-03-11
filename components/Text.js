@@ -11,14 +11,14 @@ export const Header = styled(Text)`
 		(props.size === 'h3' && 600) ||
 		(props.size === 'h4' && 400) ||
 		(props.size === 'h5' && 400) ||
-		(props.size === 'h6' && 400)};
+		(props.size === 'h6' && 600)};
 	font-size: ${props =>
 		(props.size === 'h1' && '40px') ||
 		(props.size === 'h2' && '36px') ||
 		(props.size === 'h3' && '32px') ||
 		(props.size === 'h4' && '28px') ||
 		(props.size === 'h5' && '24px') ||
-		(props.size === 'h6' && '20px')};
+		(props.size === 'h6' && '14px')};
 	padding: ${({ p }) => (p ? `${p * 8}px` : '0px')};
 	padding-top: ${({ pt }) => (pt ? `${pt * 8}px` : '0px')};
 	padding-right: ${({ pr }) => (pr ? `${pr * 8}px` : '0px')};
