@@ -32,7 +32,6 @@ class AddQuestion extends Component {
 		// TODO option to enter question
 		// TODO option to submit question
 
-		const { navigate } = this.props.navigation
 		const { deck } = this.props.navigation.state.params
 		const { question, answer } = this.state
 		const { handleSubmit } = this.props
