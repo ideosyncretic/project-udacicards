@@ -1,6 +1,6 @@
 const mockDecks = [
 	{
-		key: '12310',
+		id: '12310',
 		title: 'Redux',
 		cardCount: 10,
 		questions: [
@@ -17,7 +17,7 @@ const mockDecks = [
 		],
 	},
 	{
-		key: '12311',
+		id: '12311',
 		title: 'React',
 		cardCount: 10,
 		questions: [
@@ -35,13 +35,13 @@ const mockDecks = [
 		],
 	},
 	{
-		key: '12312',
+		id: '12312',
 		title: 'React Native',
 		cardCount: 14,
 		questions: [
 			{
 				id: 'welcjnewlridnwlwn',
-				question: 'Who is Keyser Soze?',
+				question: 'Who is idser Soze?',
 				answer: 'Kevin Spacey lol',
 			},
 			{
@@ -52,25 +52,25 @@ const mockDecks = [
 		],
 	},
 	{
-		key: '12313',
+		id: '12313',
 		title: 'Web Development',
 		cardCount: 8,
 		questions: [],
 	},
 	{
-		key: '12314',
+		id: '12314',
 		title: 'Coding for Designers',
 		cardCount: 10,
 		questions: [],
 	},
 	{
-		key: '12316',
+		id: '12316',
 		title: 'GraphQL',
 		cardCount: 12,
 		questions: [],
 	},
 	{
-		key: '12315',
+		id: '12315',
 		title: 'Server-side Rendering',
 		cardCount: 15,
 		questions: [],

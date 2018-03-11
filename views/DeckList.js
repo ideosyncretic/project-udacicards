@@ -10,19 +10,22 @@ import decks from '../utils/data'
 
 // default view
 class DeckList extends Component {
+	_keyExtractor = (item, index) => item.id
+
+	_renderItem = ({ item }) => {
+		return <DeckCard {...item} navigate={this.props.navigation.navigate} />
+	}
 	render() {
 		// TODO: display Deck titles
 		// TODO: display number of cards in each deck
 
-		const { navigate } = this.props.navigation
 		return (
 			<StyledViewContainer>
 				<FlatList
 					data={decks}
-					renderItem={({ item }) => (
-						<DeckCard key={item.key} {...item} navigate={navigate} />
-					)}
+					renderItem={this._renderItem}
 					contentContainerStyle={{ paddingTop: 16, paddingBottom: 96 }}
+					keyExtractor={this._keyExtractor}
 				/>
 				<FAB
 					buttonColor={COLORS.primary}
@@ -38,9 +41,11 @@ class DeckList extends Component {
 	}
 }
 
-const DeckCard = ({ title, cardCount, navigate }) => {
+const DeckCard = ({ id, title, cardCount, questions, navigate }) => {
 	return (
-		<TouchableOpacity onPress={() => navigate('Deck', { title, cardCount })}>
+		<TouchableOpacity
+			onPress={() => navigate('Deck', { id, title, cardCount, questions })}
+		>
 			<StyledCard>
 				<Header size="h2" pb={1} center>
 					{title}
