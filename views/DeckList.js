@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { FlatList, TouchableOpacity } from 'react-native'
 import { Header } from '../components/Text'
 import Card from '../components/Card'
@@ -6,11 +7,10 @@ import ViewContainer from '../components/ViewContainer'
 import FAB from 'react-native-fab'
 import { Ionicons } from '@expo/vector-icons'
 import COLORS from '../styles/colors'
-import decks from '../utils/data'
 
 // default view
 class DeckList extends Component {
-	_keyExtractor = (item, index) => item.id
+	_keyExtractor = item => item.id
 
 	_renderItem = ({ item }) => {
 		return <DeckCard deck={item} navigate={this.props.navigation.navigate} />
@@ -20,6 +20,7 @@ class DeckList extends Component {
 		// TODO: display number of cards in each deck
 
 		const { navigate } = this.props.navigation
+		const { decks } = this.props
 
 		return (
 			<StyledViewContainer>
@@ -65,5 +66,16 @@ const StyledCard = Card.extend`
 const StyledViewContainer = ViewContainer.extend`
 	padding: 0px;
 `
+const mapStateToProps = ({ decks }) => {
+	const decksArr = Object.keys(decks).map(id => {
+		return {
+			...decks[id],
+			cardCount: decks[id].cards.length,
+		}
+	})
+	return {
+		decks: decksArr,
+	}
+}
 
-export default DeckList
+export default connect(mapStateToProps, null)(DeckList)

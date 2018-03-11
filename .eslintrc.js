@@ -2,6 +2,7 @@ module.exports = {
 	env: {
 		es6: true,
 		node: true,
+		browser: true,
 	},
 	plugins: ['eslint-plugin-react'],
 	extends: 'eslint:recommended',
@@ -22,5 +23,6 @@ module.exports = {
 		semi: ['error', 'never'],
 		'react/jsx-uses-vars': 1,
 		'react/jsx-uses-react': 1,
+		'no-case-declarations': 'off',
 	},
 }
