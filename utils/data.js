@@ -1,5 +1,5 @@
-const mockDecks = [
-	{
+const mockDecks = {
+	'12310': {
 		id: '12310',
 		title: 'Redux',
 		cardCount: 10,
@@ -16,7 +16,7 @@ const mockDecks = [
 			},
 		],
 	},
-	{
+	'12311': {
 		id: '12311',
 		title: 'React',
 		cardCount: 10,
@@ -34,7 +34,7 @@ const mockDecks = [
 			},
 		],
 	},
-	{
+	'12312': {
 		id: '12312',
 		title: 'React Native',
 		cardCount: 14,
@@ -51,30 +51,30 @@ const mockDecks = [
 			},
 		],
 	},
-	{
+	'12313': {
 		id: '12313',
 		title: 'Web Development',
 		cardCount: 8,
 		questions: [],
 	},
-	{
+	'12314': {
 		id: '12314',
 		title: 'Coding for Designers',
 		cardCount: 10,
 		questions: [],
 	},
-	{
+	'12316': {
 		id: '12316',
 		title: 'GraphQL',
 		cardCount: 12,
 		questions: [],
 	},
-	{
+	'12315': {
 		id: '12315',
 		title: 'Server-side Rendering',
 		cardCount: 15,
 		questions: [],
 	},
-]
+}
 
 export default mockDecks
