@@ -37,7 +37,6 @@ class AddQuestion extends Component {
 		// TODO option to enter question
 		// TODO option to submit question
 
-		const { deck } = this.props.navigation.state.params
 		const { question, answer } = this.state
 		const { handleSubmit } = this.props
 
@@ -94,6 +93,6 @@ const formOptions = {
 	form: 'addQuestion',
 }
 
-AddQuestion = reduxForm(formOptions)(AddQuestion)
+const AddQuestionWithForm = reduxForm(formOptions)(AddQuestion)
 
-export default connect(null, { addCard })(AddQuestion)
+export default connect(null, { addCard })(AddQuestionWithForm)

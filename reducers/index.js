@@ -18,7 +18,6 @@ const decks = (state = {}, action) => {
 		}
 	case types.ADD_CARD:
 		const { deckID, card } = action
-		console.log(deckID, card)
 		return {
 			...state,
 			[deckID]: {
