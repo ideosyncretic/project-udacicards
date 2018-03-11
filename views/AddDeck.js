@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
+import { reduxForm, Field } from 'redux-form'
 import Button, { ButtonText } from '../components/Buttons'
 import Input from '../components/Inputs'
 import { Header } from '../components/Text'
 import ViewContainer from '../components/ViewContainer'
-import COLOR from '../styles/colors'
 
 class AddDeck extends Component {
 	static navigationOptions = () => ({
@@ -24,29 +23,28 @@ class AddDeck extends Component {
 		// TODO option to submit title
 		const { title } = this.state
 		return (
-			<StyledViewContainer>
-				<Header size="h6">What are you learning?</Header>
-				<View>
-					<Input
-						value={title}
-						onChangeText={title => this.handleTitleChange(title)}
-						placeholder="Building a time machine"
-						size="l"
-					/>
-				</View>
+			<ViewContainer>
+				<Header size="h6">WHAT ARE YOU LEARNING?</Header>
+				<Field
+					name="title"
+					value={title}
+					onChange={this.handleTitleChange}
+					component={Input}
+					placeholder="React Native Fancy App"
+					size="l"
+					autoFocus
+					editable={true}
+					maxLength={30}
+					textAlignVertical={'top'}
+				/>
 				<Button onPress={() => alert(title)}>
 					<ButtonText>CREATE DECK</ButtonText>
 				</Button>
-			</StyledViewContainer>
+			</ViewContainer>
 		)
 	}
 }
 
-const StyledViewContainer = ViewContainer.extend`
-	padding: 32px;
-`
-// const StyledButton = styled(Button)`
-// 	padding: 8px;
-// 	height: 32px;
-// `
-export default AddDeck
+export default reduxForm({
+	form: 'addDeck',
+})(AddDeck)
