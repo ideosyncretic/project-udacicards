@@ -19,6 +19,8 @@ class DeckList extends Component {
 		// TODO: display Deck titles
 		// TODO: display number of cards in each deck
 
+		const { navigate } = this.props.navigation
+
 		return (
 			<StyledViewContainer>
 				<FlatList
