@@ -59,11 +59,4 @@ class Quiz extends Component {
 	}
 }
 
-const generateStack = questions => {
-	let views = {}
-	questions.map(question => {
-		views[question.id] = question
-	})
-}
-
 export default Quiz
