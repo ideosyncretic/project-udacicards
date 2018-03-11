@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import { View, TextInput } from 'react-native'
-import styled from 'styled-components/native'
+import { View } from 'react-native'
 import Button, { ButtonText } from '../components/Buttons'
+import Input from '../components/Inputs'
 import { Header } from '../components/Text'
 import ViewContainer from '../components/ViewContainer'
 import COLOR from '../styles/colors'
 
 class AddDeck extends Component {
 	static navigationOptions = () => ({
-		title: 'Add Deck',
+		title: 'Create deck',
 	})
 
 	state = {
@@ -25,30 +25,23 @@ class AddDeck extends Component {
 		const { title } = this.state
 		return (
 			<StyledViewContainer>
-				<Header size="h4">Name your deck</Header>
+				<Header size="h6">What are you learning?</Header>
 				<View>
-					<StyledTextInput
+					<Input
 						value={title}
 						onChangeText={title => this.handleTitleChange(title)}
-						multiline
-						numberOfLines={2}
-						placeholder="Title"
-						underlineColorAndroid={COLOR.primary}
-						selectionColor={COLOR.primary}
+						placeholder="Building a time machine"
+						size="l"
 					/>
 				</View>
 				<Button onPress={() => alert(title)}>
-					<ButtonText>ADD DECK</ButtonText>
+					<ButtonText>CREATE DECK</ButtonText>
 				</Button>
 			</StyledViewContainer>
 		)
 	}
 }
 
-const StyledTextInput = styled(TextInput)`
-	font-size: 28px;
-	padding: 8px;
-`
 const StyledViewContainer = ViewContainer.extend`
 	padding: 32px;
 `

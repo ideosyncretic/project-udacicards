@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import mockDecks from '../utils/data'
 // TODO import * as types from '../actions/types'
-// import { reducer as formReducer } from 'redux-form'
+import { reducer as formReducer } from 'redux-form'
 
 const decks = (state = mockDecks, action) => {
 	// switch (action.type) {
@@ -22,7 +22,7 @@ const decks = (state = mockDecks, action) => {
 const rootReducer = combineReducers({
 	decks,
 	// questions,
-	// form: formReducer,
+	form: formReducer,
 })
 
 export default rootReducer

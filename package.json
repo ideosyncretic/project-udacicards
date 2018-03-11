@@ -16,7 +16,8 @@
 		"eject": "react-native-scripts eject",
 		"android": "react-native-scripts android",
 		"ios": "react-native-scripts ios",
-		"test": "node node_modules/jest/bin/jest.js"
+		"test": "node node_modules/jest/bin/jest.js",
+		"postinstall": "rndebugger-open"
 	},
 	"jest": {
 		"preset": "jest-expo"
@@ -25,6 +26,7 @@
 		"expo": "^25.0.0",
 		"react": "16.2.0",
 		"react-native": "0.52.0",
+		"react-native-debugger-open": "^0.3.17",
 		"react-native-fab": "^1.0.6",
 		"react-navigation": "^1.4.0",
 		"react-redux": "^5.0.7",
