@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
-import { reduxForm, Field } from 'redux-form'
+import { Field, reduxForm, reset } from 'redux-form'
 import styled from 'styled-components/native'
 import Input from '../components/Inputs'
 import Button, { ButtonText } from '../components/Buttons'
@@ -89,8 +89,11 @@ const StyledScrollView = styled(ScrollView)`
 	padding: 32px;
 `
 
+const handleSubmitSuccess = (result, dispatch) => dispatch(reset('addQuestion'))
+
 const formOptions = {
 	form: 'addQuestion',
+	onSubmitSuccess: handleSubmitSuccess,
 }
 
 const AddQuestionWithForm = reduxForm(formOptions)(AddQuestion)
