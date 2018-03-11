@@ -13,7 +13,7 @@ class DeckList extends Component {
 	_keyExtractor = (item, index) => item.id
 
 	_renderItem = ({ item }) => {
-		return <DeckCard {...item} navigate={this.props.navigation.navigate} />
+		return <DeckCard deck={item} navigate={this.props.navigation.navigate} />
 	}
 	render() {
 		// TODO: display Deck titles
@@ -41,11 +41,10 @@ class DeckList extends Component {
 	}
 }
 
-const DeckCard = ({ id, title, cardCount, questions, navigate }) => {
+const DeckCard = ({ deck, navigate }) => {
+	const { title, cardCount } = deck
 	return (
-		<TouchableOpacity
-			onPress={() => navigate('Deck', { id, title, cardCount, questions })}
-		>
+		<TouchableOpacity onPress={() => navigate('Deck', { deck })}>
 			<StyledCard>
 				<Header size="h2" pb={1} center>
 					{title}

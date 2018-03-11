@@ -39,12 +39,6 @@ const Tabs = TabNavigator(
 				tabBarLabel: 'Decks',
 			},
 		},
-		AddQuestion: {
-			screen: AddQuestion,
-			navigationOptions: {
-				tabBarLabel: 'AddQuestion',
-			},
-		},
 	},
 	{
 		navigationOptions: {
@@ -91,6 +85,10 @@ const Stacks = StackNavigator({
 	},
 	Quiz: {
 		screen: Quiz,
+		navigationOptions: StackNavigatorOptions,
+	},
+	AddQuestion: {
+		screen: AddQuestion,
 		navigationOptions: StackNavigatorOptions,
 	},
 })

@@ -9,9 +9,9 @@ import { Header } from '../components/Text'
 
 class Deck extends Component {
 	static navigationOptions = ({ navigation }) => {
-		const { title } = navigation.state.params
+		const { deck } = navigation.state.params
 		return {
-			title,
+			title: `Deck: ${deck.title}`,
 		}
 	}
 	render() {
@@ -19,7 +19,8 @@ class Deck extends Component {
 		// TODO display option to add new question card to deck
 
 		const { navigate } = this.props.navigation
-		const { title, cardCount } = this.props.navigation.state.params
+		const { deck } = this.props.navigation.state.params
+		const { id, title, cardCount } = deck
 
 		// TODO get questions from store
 
@@ -34,7 +35,7 @@ class Deck extends Component {
 				<Button onPress={() => navigate('Quiz', { title })}>
 					<ButtonText>START QUIZ</ButtonText>
 				</Button>
-				<MinimalButton onPress={() => alert('Add question')}>
+				<MinimalButton onPress={() => navigate('AddQuestion', { deck })}>
 					<MinimalButtonText>ADD QUESTION</MinimalButtonText>
 				</MinimalButton>
 			</FlatCard>
