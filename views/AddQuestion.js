@@ -1,23 +1,21 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
 import { reduxForm, Field } from 'redux-form'
 import styled from 'styled-components/native'
 import Input from '../components/Inputs'
 import Button, { ButtonText } from '../components/Buttons'
 import { Header } from '../components/Text'
+import { addCard } from '../actions'
 
 class AddQuestion extends Component {
 	static navigationOptions = () => ({
-		title: 'Add quiz question',
+		title: 'Add flashcard',
 	})
 
 	state = {
 		question: '',
 		answer: '',
-	}
-
-	submit = values => {
-		console.log('submitting form', values)
 	}
 
 	handleQuestionChange = question => {
@@ -26,6 +24,13 @@ class AddQuestion extends Component {
 
 	handleAnswerChange = answer => {
 		this.setState({ answer })
+	}
+
+	submit = card => {
+		const { deck } = this.props.navigation.state.params
+		const { id, title } = deck
+		this.props.addCard(id, card)
+		this.props.navigation.navigate('Deck', { id, title })
 	}
 
 	render() {
@@ -43,9 +48,6 @@ class AddQuestion extends Component {
 				keyboardVerticalOffset={100}
 			>
 				<StyledScrollView>
-					<Header size="h3" pb={2}>
-						{deck.title}
-					</Header>
 					<Header size="h6">QUESTION</Header>
 					<Field
 						name="question"
@@ -76,7 +78,7 @@ class AddQuestion extends Component {
 						textAlignVertical={'top'}
 					/>
 					<Button onPress={handleSubmit(this.submit)}>
-						<ButtonText>ADD QUESTION</ButtonText>
+						<ButtonText>ADD FLASHCARD</ButtonText>
 					</Button>
 				</StyledScrollView>
 			</KeyboardAvoidingView>
@@ -88,6 +90,10 @@ const StyledScrollView = styled(ScrollView)`
 	padding: 32px;
 `
 
-export default reduxForm({
+const formOptions = {
 	form: 'addQuestion',
-})(AddQuestion)
+}
+
+AddQuestion = reduxForm(formOptions)(AddQuestion)
+
+export default connect(null, { addCard })(AddQuestion)

@@ -45,14 +45,16 @@ class DeckList extends Component {
 }
 
 const DeckCard = ({ deck, navigate }) => {
-	const { title, cardCount } = deck
+	const { id, title, cardCount } = deck
 	return (
-		<TouchableOpacity onPress={() => navigate('Deck', { deck })}>
+		<TouchableOpacity onPress={() => navigate('Deck', { id, title })}>
 			<StyledCard>
 				<Header size="h2" pb={1} center>
 					{title}
 				</Header>
-				<Header size="h4">{cardCount} cards</Header>
+				<Header size="h4">
+					{cardCount} {cardCount > 1 ? 'flashcards' : 'flashcard'}
+				</Header>
 			</StyledCard>
 		</TouchableOpacity>
 	)

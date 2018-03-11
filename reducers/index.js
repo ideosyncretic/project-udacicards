@@ -16,10 +16,26 @@ const decks = (state = {}, action) => {
 			},
 			...state,
 		}
+	case types.ADD_CARD:
+		const { deckID, card } = action
+		console.log(deckID, card)
+		return {
+			...state,
+			[deckID]: {
+				...state[deckID],
+				cards: [...state[deckID].cards, card],
+			},
+		}
 	default:
 		return state
 	}
 }
+
+// const currentDeck = (state = {}, action) => {
+// 	switch (action.type) {
+// 		case types.GET_DECK:
+// 		return state
+// }
 
 const rootReducer = combineReducers({
 	decks,
