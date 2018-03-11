@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { KeyboardAvoidingView, ScrollView } from 'react-native'
+import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
 import { reduxForm, Field } from 'redux-form'
 import styled from 'styled-components/native'
-
 import Input from '../components/Inputs'
 import Button, { ButtonText } from '../components/Buttons'
 import { Header } from '../components/Text'
@@ -39,12 +38,16 @@ class AddQuestion extends Component {
 		const { handleSubmit } = this.props
 
 		return (
-			<KeyboardAvoidingView behavior="padding">
+			<KeyboardAvoidingView
+				behavior="padding"
+				style={{ flex: 1 }}
+				keyboardVerticalOffset={100}
+			>
 				<StyledScrollView>
 					<Header size="h3" pb={2}>
 						{deck.title}
 					</Header>
-					<Header size="h6">Question</Header>
+					<Header size="h6">QUESTION</Header>
 					<Field
 						name="question"
 						value={question}
@@ -52,26 +55,26 @@ class AddQuestion extends Component {
 						component={Input}
 						placeholder="Redux forms cannot be used with React Native. True or false?"
 						size="m"
-						autoFocus
-						numberOfLines={4}
+						autoFocus={Platform.OS === 'ios' ? true : false}
+						numberOfLines={2}
 						editable={true}
 						maxLength={100}
 						textAlignVertical={'top'}
-						underlineColorAndroid={'transparent'}
 					/>
-					<Header size="h6">Answer</Header>
+					<Header size="h6" pt={4}>
+						ANSWER
+					</Header>
 					<Field
 						name="answer"
 						value={answer}
 						onChange={this.handleAnswerChange}
 						component={Input}
-						placeholder="False"
+						placeholder="False, Redux forms can easily be used with React Native!"
 						size="m"
-						numberOfLines={4}
+						numberOfLines={2}
 						editable={true}
 						maxLength={100}
 						textAlignVertical={'top'}
-						underlineColorAndroid={'transparent'}
 					/>
 					<Button onPress={handleSubmit(this.submit)}>
 						<ButtonText>ADD QUESTION</ButtonText>
