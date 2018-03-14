@@ -65,7 +65,7 @@ export default class Flashcard extends Component {
 		const { side } = this.state
 		const { currentCount, totalCount, question, answer } = this.props
 		return (
-			<Container>
+			<Quiz>
 				<TopRow>
 					<Header size="h6">
 						Flashcard {currentCount} of {totalCount}
@@ -80,34 +80,38 @@ export default class Flashcard extends Component {
 
 				<View>
 					<StyledFlashCard style={frontAnimatedStyle}>
-						<Header size="h2" center>
+						<Header size="h3" center>
 							{question}
 						</Header>
 					</StyledFlashCard>
 					<FlashcardAnswer style={backAnimatedStyle}>
-						<Header size="h6">{answer}</Header>
+						<Header size="h5" center>
+							{answer}
+						</Header>
 					</FlashcardAnswer>
 				</View>
-			</Container>
+			</Quiz>
 		)
 	}
 }
 
 const { width } = Dimensions.get('window')
 
-const Container = styled(View)`
+const Quiz = styled(View)`
 	flex: 1;
 	align-items: center;
 	justify-content: flex-start;
-	background-color: white;
 `
 
 const StyledFlashCard = styled(Animated.View)`
 	align-items: center;
 	justify-content: center;
 	backface-visibility: hidden;
-	width: ${width};
-	padding: 0px 48px;
+	background-color: white;
+	padding: 16px;
+	margin-bottom: 48px;
+	border-radius: 2px;
+	flex: 1;
 `
 
 const FlashcardAnswer = StyledFlashCard.extend`
@@ -121,5 +125,5 @@ const TopRow = styled(View)`
 	align-items: center;
 	justify-content: space-between;
 	width: ${width};
-	padding: 0px 48px;
+	padding: 0px 32px;
 `

@@ -32,8 +32,8 @@ class Quiz extends Component {
 		return (
 			<ViewContainer>
 				<Flashcard
-					question="Some question about coding here"
-					answer="Long answer text demo sample here"
+					question="Can Redux be used with React Native?"
+					answer="Yes, you can use Redux with React Native!"
 					currentCount={1}
 					totalCount={10}
 				/>

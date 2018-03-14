@@ -5,7 +5,7 @@ import COLOR from '../styles/colors'
 
 const Button = styled(TouchableOpacity)`
 	border-radius: 4px;
-	padding: 10px 32px;
+	padding: 10px 16px;
 	margin: 4px;
 	background-color: ${COLOR.primary};
 	align-items: center;
@@ -21,10 +21,7 @@ const StyledButtonText = styled(Text)`
 	color: ${COLOR.textLight};
 `
 
-export const MinimalButton = styled(TouchableOpacity)`
-	padding: 10px;
-	margin: 4px;
-`
+export const MinimalButton = styled(TouchableOpacity)``
 export const MinimalButtonText = styled(Text)`
 	margin: 4px;
 	font-size: 16px;
