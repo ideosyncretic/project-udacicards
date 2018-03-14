@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
-import Card from '../components/Card'
+import ViewContainer from '../components/ViewContainer'
 import { Header } from '../components/Text'
+import Flashcard from '../components/Flashcard'
 import Button, {
 	ButtonText,
 	MinimalButton,
@@ -29,35 +30,36 @@ class Quiz extends Component {
 		// TODO display percentage of correct answers once quiz is complete
 		const { deck } = this.props.navigation.state.params
 		return (
-			<Card>
-				<Header size="h6">1/10</Header>
-				<Header size="h1" pb={2} center>
-					Some question
-				</Header>
-				<MinimalButton>
-					<MinimalButtonText>Flip for answer</MinimalButtonText>
-				</MinimalButton>
-				<Button>
-					<View style={{ flexDirection: 'row', alignItems: 'center' }}>
-						<ButtonText>CORRECT</ButtonText>
-						<MaterialIcons
-							name="thumb-up"
-							color={COLOR.textLight}
-							style={{ paddingLeft: 8 }}
-						/>
-					</View>
-				</Button>
-				<Button>
-					<View style={{ flexDirection: 'row', alignItems: 'center' }}>
-						<ButtonText>INCORRECT</ButtonText>
-						<MaterialIcons
-							name="thumb-down"
-							color={COLOR.textLight}
-							style={{ paddingLeft: 8 }}
-						/>
-					</View>
-				</Button>
-			</Card>
+			<ViewContainer>
+				<Flashcard
+					question="Some question about coding here"
+					answer="Long answer text demo sample here"
+					currentCount={1}
+					totalCount={10}
+				/>
+				<View style={{ flexDirection: 'row', alignItems: 'center' }}>
+					<Button>
+						<View style={{ flexDirection: 'row', alignItems: 'center' }}>
+							<ButtonText>CORRECT</ButtonText>
+							<MaterialIcons
+								name="thumb-up"
+								color={COLOR.textLight}
+								style={{ paddingLeft: 8 }}
+							/>
+						</View>
+					</Button>
+					<Button>
+						<View style={{ flexDirection: 'row', alignItems: 'center' }}>
+							<ButtonText>INCORRECT</ButtonText>
+							<MaterialIcons
+								name="thumb-down"
+								color={COLOR.textLight}
+								style={{ paddingLeft: 8 }}
+							/>
+						</View>
+					</Button>
+				</View>
+			</ViewContainer>
 		)
 	}
 }
