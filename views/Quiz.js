@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
-import ViewContainer from '../components/ViewContainer'
+import Card from '../components/Card'
 import { Header } from '../components/Text'
+import ViewContainer from '../components/ViewContainer'
 import Flashcard from '../components/Flashcard'
-import Button, {
-	ButtonText,
-	MinimalButton,
-	MinimalButtonText,
-} from '../components/Buttons'
+import Button, { ButtonText } from '../components/Buttons'
 import COLOR from '../styles/colors'
 
 class Quiz extends Component {
@@ -19,26 +16,44 @@ class Quiz extends Component {
 		}
 	}
 
-	componentDidMount() {}
+	state = {
+		currentCardIndex: 0,
+		correctCount: 0,
+	}
+
+	handleCorrect = () => {
+		this.setState(state => ({
+			currentCardIndex: state.currentCardIndex + 1,
+			correctCount: state.correctCount + 1,
+		}))
+	}
+
+	handleIncorrect = () => {
+		this.setState(state => ({
+			currentCardIndex: state.currentCardIndex + 1,
+		}))
+	}
+
+	getScore = (correct, total) => {
+		return correct / total * 100
+	}
 
 	render() {
-		// TODO display a question card
-		// TODO display option to view the answer (flips card)
-		// TODO display Correct button
-		// TODO display Incorrect button
 		// TODO display number of remaining question cards in quiz
 		// TODO display percentage of correct answers once quiz is complete
 		const { deck } = this.props.navigation.state.params
-		return (
+		const { cards } = deck
+		const { currentCardIndex, correctCount } = this.state
+		return cards[currentCardIndex] ? (
 			<ViewContainer>
 				<Flashcard
-					question="Can Redux be used with React Native?"
-					answer="Yes, you can use Redux with React Native!"
-					currentCount={1}
-					totalCount={10}
+					question={cards[currentCardIndex].question}
+					answer={cards[currentCardIndex].answer}
+					currentCount={currentCardIndex + 1}
+					totalCount={cards.length}
 				/>
 				<View style={{ flexDirection: 'row', alignItems: 'center' }}>
-					<Button>
+					<Button onPress={this.handleCorrect}>
 						<View style={{ flexDirection: 'row', alignItems: 'center' }}>
 							<ButtonText>CORRECT</ButtonText>
 							<MaterialIcons
@@ -48,7 +63,7 @@ class Quiz extends Component {
 							/>
 						</View>
 					</Button>
-					<Button>
+					<Button onPress={this.handleIncorrect}>
 						<View style={{ flexDirection: 'row', alignItems: 'center' }}>
 							<ButtonText>INCORRECT</ButtonText>
 							<MaterialIcons
@@ -59,6 +74,15 @@ class Quiz extends Component {
 						</View>
 					</Button>
 				</View>
+			</ViewContainer>
+		) : (
+			<ViewContainer>
+				<Card>
+					<Header size="h5">Your results</Header>
+					<Header size="h3">
+						{this.getScore(correctCount, cards.length)}% correct!
+					</Header>
+				</Card>
 			</ViewContainer>
 		)
 	}

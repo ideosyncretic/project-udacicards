@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import pluralize from 'pluralize'
 import { FlatList, TouchableOpacity } from 'react-native'
 import { Header } from '../components/Text'
 import Card from '../components/Card'
@@ -47,13 +48,13 @@ class DeckList extends Component {
 const DeckCard = ({ deck, navigate }) => {
 	const { id, title, cardCount } = deck
 	return (
-		<TouchableOpacity onPress={() => navigate('Deck', { id, title })}>
+		<TouchableOpacity onPress={() => navigate('Deck', { id })}>
 			<StyledCard>
 				<Header size="h2" pb={1} center>
 					{title}
 				</Header>
 				<Header size="h4">
-					{cardCount} {cardCount > 1 ? 'flashcards' : 'flashcard'}
+					{cardCount} {pluralize('flashcard', cardCount)}
 				</Header>
 			</StyledCard>
 		</TouchableOpacity>

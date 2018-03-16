@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import pluralize from 'pluralize'
 import { FlatCard } from '../components/Card'
 import Button, {
 	ButtonText,
@@ -9,10 +10,9 @@ import Button, {
 import { Header } from '../components/Text'
 
 class Deck extends Component {
-	static navigationOptions = ({ navigation }) => {
-		const { title } = navigation.state.params
+	static navigationOptions = () => {
 		return {
-			title: `Deck: ${title}`,
+			title: 'Deck',
 		}
 	}
 
@@ -29,7 +29,7 @@ class Deck extends Component {
 					{deck.title}
 				</Header>
 				<Header size="h4" pb={4} center>
-					{deck.cardCount} {deck.cardCount > 1 ? 'flashcards' : 'flashcard'}
+					{deck.cardCount} {pluralize('flashcard', deck.cardCount)}
 				</Header>
 				<Button onPress={() => navigate('Quiz', { deck })}>
 					<ButtonText>START QUIZ</ButtonText>
