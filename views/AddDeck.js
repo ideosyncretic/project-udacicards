@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
+import uuidv4 from 'uuid/v4'
 import Button, { ButtonText } from '../components/Buttons'
 import Input from '../components/Inputs'
 import { Header } from '../components/Text'
@@ -21,8 +22,9 @@ class AddDeck extends Component {
 	}
 
 	submit = ({ title }) => {
-		this.props.addDeck(title)
-		this.props.navigation.navigate('Home') // TODO redirect to newly created Deck
+		const id = uuidv4()
+		this.props.addDeck(id, title)
+		this.props.navigation.navigate('Deck', { id })
 	}
 
 	render() {
