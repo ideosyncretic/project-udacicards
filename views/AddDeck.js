@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { reduxForm, Field } from 'redux-form'
+import { Field, reduxForm, reset } from 'redux-form'
 import uuidv4 from 'uuid/v4'
 import Button, { ButtonText } from '../components/Buttons'
 import Input from '../components/Inputs'
@@ -55,10 +55,13 @@ class AddDeck extends Component {
 	}
 }
 
+const onSubmitSuccess = (result, dispatch) => dispatch(reset('addDeck'))
+
 const formOptions = {
 	form: 'addDeck',
+	onSubmitSuccess,
 }
 
-AddDeck = reduxForm(formOptions)(AddDeck)
+const AddDeckWithForm = reduxForm(formOptions)(AddDeck)
 
-export default connect(null, { addDeck })(AddDeck)
+export default connect(null, { addDeck })(AddDeckWithForm)

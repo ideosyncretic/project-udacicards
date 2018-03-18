@@ -89,11 +89,11 @@ const StyledScrollView = styled(ScrollView)`
 	padding: 32px;
 `
 
-const handleSubmitSuccess = (result, dispatch) => dispatch(reset('addQuestion'))
+const onSubmitSuccess = (result, dispatch) => dispatch(reset('addQuestion'))
 
 const formOptions = {
 	form: 'addQuestion',
-	onSubmitSuccess: handleSubmitSuccess,
+	onSubmitSuccess,
 }
 
 const AddQuestionWithForm = reduxForm(formOptions)(AddQuestion)
