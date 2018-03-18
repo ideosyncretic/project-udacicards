@@ -32,10 +32,10 @@ class Deck extends Component {
 					{deck.cardCount} {pluralize('flashcard', deck.cardCount)}
 				</Header>
 				<Button onPress={() => navigate('Quiz', { deck })}>
-					<ButtonText>START QUIZ</ButtonText>
+					<ButtonText>Start quiz</ButtonText>
 				</Button>
 				<MinimalButton onPress={() => navigate('AddQuestion', { deck })}>
-					<MinimalButtonText>ADD FLASHCARD</MinimalButtonText>
+					<MinimalButtonText>Add flashcard</MinimalButtonText>
 				</MinimalButton>
 			</FlatCard>
 		)
