@@ -80,14 +80,10 @@ export default class Flashcard extends Component {
 
 				<View>
 					<StyledFlashCard style={frontAnimatedStyle}>
-						<Header size="h3" center>
-							{question}
-						</Header>
+						<Header size="h3">{question}</Header>
 					</StyledFlashCard>
 					<FlashcardAnswer style={backAnimatedStyle}>
-						<Header size="h5" center>
-							{answer}
-						</Header>
+						<Header size="h6">{answer}</Header>
 					</FlashcardAnswer>
 				</View>
 			</Quiz>
@@ -100,7 +96,6 @@ const { width } = Dimensions.get('window')
 const Quiz = styled(View)`
 	flex: 1;
 	align-items: center;
-	justify-content: flex-start;
 `
 
 const StyledFlashCard = styled(Animated.View)`
@@ -111,7 +106,6 @@ const StyledFlashCard = styled(Animated.View)`
 	padding: 16px;
 	margin-bottom: 48px;
 	border-radius: 2px;
-	flex: 1;
 `
 
 const FlashcardAnswer = StyledFlashCard.extend`

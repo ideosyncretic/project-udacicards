@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
 import * as types from '../actions/'
 import { reducer as formReducer } from 'redux-form'
+import initialDecks from '../utils/data'
 
-const decks = (state = {}, action) => {
+const decks = (state = initialDecks, action) => {
 	switch (action.type) {
 	case types.ADD_DECK:
 		const { id, title } = action
@@ -27,12 +28,6 @@ const decks = (state = {}, action) => {
 		return state
 	}
 }
-
-// const currentDeck = (state = {}, action) => {
-// 	switch (action.type) {
-// 		case types.GET_DECK:
-// 		return state
-// }
 
 const rootReducer = combineReducers({
 	decks,

@@ -61,12 +61,19 @@ class Quiz extends Component {
 		const { currentCardIndex, correctCount } = this.state
 		return cards[currentCardIndex] ? (
 			<ViewContainer>
-				<Flashcard
-					question={cards[currentCardIndex].question}
-					answer={cards[currentCardIndex].answer}
-					currentCount={currentCardIndex + 1}
-					totalCount={cards.length}
-				/>
+				{cards.map(
+					(card, index) =>
+						currentCardIndex === index && (
+							<Flashcard
+								key={currentCardIndex}
+								question={cards[currentCardIndex].question}
+								answer={cards[currentCardIndex].answer}
+								currentCount={currentCardIndex + 1}
+								totalCount={cards.length}
+							/>
+						),
+				)}
+
 				<View
 					style={{
 						flexDirection: 'row',
@@ -127,10 +134,10 @@ const ResultsCard = ({ score, correctCount, totalCount }) => {
 	if (score === 0) {
 		message = 'Try again! 💪 '
 	}
-	if (score > 0 && score < 60) {
+	if (score >= 0 && score <= 60) {
 		message = 'Good effort! 👏'
 	}
-	if (score > 60) {
+	if (score >= 60) {
 		message = 'Keep it up! 🙌'
 	}
 	if (score === 100) {
