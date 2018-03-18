@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import pluralize from 'pluralize'
-import { FlatList, TouchableOpacity } from 'react-native'
+import { FlatList, TouchableOpacity, Platform } from 'react-native'
 import { Header } from '../components/Text'
 import Card from '../components/Card'
 import ViewContainer from '../components/ViewContainer'
@@ -31,15 +31,17 @@ class DeckList extends Component {
 					contentContainerStyle={{ paddingTop: 16, paddingBottom: 96 }}
 					keyExtractor={this._keyExtractor}
 				/>
-				<FAB
-					buttonColor={COLORS.primary}
-					iconTextColor={COLORS.textLight}
-					onClickAction={() => {
-						navigate('AddDeck')
-					}}
-					visible={true}
-					iconTextComponent={<Ionicons name="md-add" />}
-				/>
+				{Platform.OS === 'android' && (
+					<FAB
+						buttonColor={COLORS.primary}
+						iconTextColor={COLORS.textLight}
+						onClickAction={() => {
+							navigate('AddDeck')
+						}}
+						visible={true}
+						iconTextComponent={<Ionicons name="md-add" />}
+					/>
+				)}
 			</StyledViewContainer>
 		)
 	}
