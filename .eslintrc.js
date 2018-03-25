@@ -17,6 +17,7 @@ module.exports = {
 		codeFrame: false,
 	},
 	rules: {
+		'no-console': 'off',
 		indent: ['error', 'tab'],
 		'linebreak-style': ['error', 'unix'],
 		quotes: ['error', 'single'],
