@@ -29,8 +29,25 @@ const decks = (state = initialDecks, action) => {
 	}
 }
 
+const notifications = (
+	state = {
+		areNotificationsSet: false,
+	},
+	action,
+) => {
+	switch (action.type) {
+	case types.NOTIFICATIONS_ARE_SET:
+		return {
+			areNotificationsSet: true,
+		}
+	default:
+		return state
+	}
+}
+
 const rootReducer = combineReducers({
 	decks,
+	notifications,
 	form: formReducer,
 })
 

@@ -12,19 +12,8 @@ import AddDeck from './views/AddDeck'
 import AddQuestion from './views/AddQuestion'
 import Quiz from './views/Quiz'
 import COLOR from './styles/colors'
-import { Permissions } from 'expo'
-import { scheduleNotifications } from './utils/scheduleNotifications'
 
-export default class App extends Component {
-	setNotifications = async () => {
-		await Permissions.askAsync(Permissions.NOTIFICATIONS)
-		scheduleNotifications()
-	}
-
-	componentDidMount() {
-		this.setNotifications()
-	}
-
+class App extends Component {
 	render() {
 		return (
 			<Provider store={storeConfig().store}>
@@ -148,3 +137,5 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 })
+
+export default App

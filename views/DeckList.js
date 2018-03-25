@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Permissions } from 'expo'
 import pluralize from 'pluralize'
 import { FlatList, TouchableOpacity, Platform } from 'react-native'
 import { Header } from '../components/Text'
@@ -8,9 +9,24 @@ import ViewContainer from '../components/ViewContainer'
 import FAB from 'react-native-fab'
 import { Ionicons } from '@expo/vector-icons'
 import COLORS from '../styles/colors'
+import { scheduleNotifications } from '../utils/scheduleNotifications'
+import { notificationsAreSet } from '../actions/index'
 
 // default view
 class DeckList extends Component {
+	setNotifications = async () => {
+		await Permissions.askAsync(Permissions.NOTIFICATIONS)
+		scheduleNotifications()
+	}
+
+	componentDidMount() {
+		console.log(this.props.notifications.areNotificationsSet)
+		if (this.props.notifications.areNotificationsSet === false) {
+			this.setNotifications()
+			this.props.notificationsAreSet()
+		}
+	}
+
 	_keyExtractor = item => item.id
 
 	_renderItem = ({ item }) => {
@@ -71,7 +87,7 @@ const StyledCard = Card.extend`
 const StyledViewContainer = ViewContainer.extend`
 	padding: 0px;
 `
-const mapStateToProps = ({ decks }) => {
+const mapStateToProps = ({ decks, notifications }) => {
 	const decksArr = Object.keys(decks).map(id => {
 		return {
 			...decks[id],
@@ -80,7 +96,8 @@ const mapStateToProps = ({ decks }) => {
 	})
 	return {
 		decks: decksArr,
+		notifications,
 	}
 }
 
-export default connect(mapStateToProps, null)(DeckList)
+export default connect(mapStateToProps, { notificationsAreSet })(DeckList)

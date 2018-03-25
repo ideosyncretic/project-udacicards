@@ -7,7 +7,7 @@ import rootReducer from '../reducers'
 const persistConfig = {
 	key: '@udaci-cards/root',
 	storage: AsyncStorage,
-	whitelist: ['decks'],
+	whitelist: ['decks', 'notifications'],
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

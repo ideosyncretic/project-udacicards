@@ -3,8 +3,8 @@ import { Notifications } from 'expo'
 
 export const scheduleNotifications = () => {
 	const localNotification = {
-		title: 'Refresh your knowledge!',
-		body: 'Take a quiz',
+		title: 'Refresh your knowledge 💪',
+		body: 'Take a quiz!',
 		data: { type: 'delayed' },
 	}
 
@@ -15,19 +15,19 @@ export const scheduleNotifications = () => {
 		.valueOf() // time in Unix epoch milliseconds
 
 	// config object is required by scheduleLocalNotificationsAsync()
-	const scheduleOptions = {
+	const schedulingOptions = {
 		time: tomorrow,
 		repeat: 'day',
 	}
 
 	console.log('Scheduling notification', {
 		localNotification,
-		scheduleOptions,
+		schedulingOptions,
 	})
 
 	Notifications.scheduleLocalNotificationAsync(
 		localNotification,
-		scheduleOptions,
+		schedulingOptions,
 	)
 		.then(() => console.info('Notification scheduled'))
 		.catch(err => console.error(err))
