@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { View } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 import Card from '../components/Card'
@@ -13,6 +14,10 @@ import Button, {
 import pluralize from 'pluralize'
 import styled from 'styled-components/native'
 import COLOR from '../styles/colors'
+import {
+	cancelScheduledNotifications,
+	scheduleNotifications,
+} from '../utils/scheduleNotifications'
 
 class Quiz extends Component {
 	static navigationOptions = ({ navigation }) => {
@@ -54,8 +59,21 @@ class Quiz extends Component {
 	returnToDeck = () => {
 		this.props.navigation.goBack()
 	}
+
+	componentDidUpdate() {
+		const { notifications } = this.props
+		const { deck } = this.props.navigation.state.params
+		const { cards } = deck
+		const { currentCardIndex } = this.state
+		if (currentCardIndex + 1 > cards.length) {
+			if (notifications.areNotificationsSet) {
+				cancelScheduledNotifications()
+				scheduleNotifications()
+			}
+		}
+	}
+
 	render() {
-		const { navigate } = this.props.navigation
 		const { deck } = this.props.navigation.state.params
 		const { cards } = deck
 		const { currentCardIndex, correctCount } = this.state
@@ -165,4 +183,10 @@ const StyledResultsCard = styled(ResultsCard)`
 	flex: 1;
 `
 
-export default Quiz
+const mapStateToProps = ({ notifications }) => {
+	return {
+		notifications,
+	}
+}
+
+export default connect(mapStateToProps)(Quiz)
